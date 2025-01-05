@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./../styles/ResetPassword.css";
+import logo from "./../assets/logo.png";
 
 const ResetPassword = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleResetRequest = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/reset-password", { username });
+      await axios.post("http://localhost:5000/reset-password", { email });
       setMessage("Solicitação de redefinição de senha enviada com sucesso.");
       setTimeout(() => {
-        setUsername("");
-        navigate("/reset-password-form");
+        setEmail("");
+        navigate("/change-password", { state: { passwordReceived: "1234" } });
       }, 2000);
     } catch (error) {
       setMessage("Erro ao solicitar redefinição de senha.");
@@ -24,13 +25,14 @@ const ResetPassword = () => {
 
   return (
     <div className="reset-container">
+      <img src={logo} alt="Logo" className="logo" />
       <h2>Redefinir Senha</h2>
       <form onSubmit={handleResetRequest}>
         <input
-          type="text"
-          placeholder="Digite seu nome de usuário"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          placeholder="Digite seu email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <button type="submit">Solicitar Redefinição</button>

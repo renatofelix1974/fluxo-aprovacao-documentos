@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ResetPasswordForm = () => {
-  const [passwordReceived, setPasswordReceived] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [passwordReceived, setPasswordReceived] = useState(location.state?.passwordReceived || "");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -21,6 +24,9 @@ const ResetPasswordForm = () => {
         newPassword,
       });
       setMessage("Senha alterada com sucesso!");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       setMessage("Erro ao alterar a senha.");
     }

@@ -20,6 +20,7 @@ function App() {
         <Route path="/status" element={<DocumentStatus />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/reset-password-form" element={<ResetPasswordForm />} /> {/* Nova rota */}
+        <Route path="/change-password" element={<ResetPasswordForm />} />
       </Routes>
     </Router>
   );

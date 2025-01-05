@@ -24,8 +24,13 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: "postgres",
+    logging: console.log, // Adicionar logging para depuração
   }
 );
+
+sequelize.authenticate()
+  .then(() => console.log('Conexão com o banco de dados estabelecida com sucesso.'))
+  .catch(err => console.error('Erro ao conectar ao banco de dados:', err));
 
 // Definição dos modelos
 const User = sequelize.define("User", {
@@ -39,6 +44,12 @@ const User = sequelize.define("User", {
   resetTokenExpiry: { type: DataTypes.DATE, allowNull: true },
 });
 
+// Sincronizar o modelo com o banco de dados para garantir que todas as colunas existam
+sequelize.sync({ alter: true })
+  .then(() => console.log('Modelos sincronizados com sucesso.'))
+  .catch(err => console.error('Erro ao sincronizar modelos:', err));
+
+// Definição dos modelos
 const Document = sequelize.define("Document", {
   filename: { type: DataTypes.STRING, allowNull: false },
   area: { type: DataTypes.STRING, allowNull: false },
@@ -78,6 +89,7 @@ const upload = multer({ storage });
 app.post("/register", async (req, res) => {
   try {
     const { fullName, username, password, email, cpf, role } = req.body;
+    console.log("Dados recebidos para registro:", { fullName, username, email, cpf, role }); // Log para depuração
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
@@ -159,23 +171,19 @@ app.post("/documents/:id/sign", async (req, res) => {
 app.post("/reset-password", async (req, res) => {
   try {
     const { email } = req.body;
+    console.log("Email recebido para redefinição de senha:", email); // Log para depuração
+    if (!email) {
+      return res.status(400).json({ error: "O campo email é obrigatório." });
+    }
+
     const user = await User.findOne({ where: { email } });
 
     if (user) {
-      const resetToken = crypto.randomBytes(20).toString("hex");
-      user.resetToken = resetToken;
-      user.resetTokenExpiry = new Date(Date.now() + 3600000);
+      const hashedPassword = await bcrypt.hash("1234", 10);
+      user.password = hashedPassword;
       await user.save();
 
-      const resetLink = `http://localhost:3000/reset-password-form?token=${resetToken}`;
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: "Redefinição de Senha",
-        text: `Clique no link para redefinir sua senha: ${resetLink}`,
-      });
-
-      res.status(200).json({ message: "E-mail de redefinição de senha enviado." });
+      res.status(200).json({ message: "Senha redefinida para 1234." });
     } else {
       res.status(404).json({ error: "Usuário não encontrado." });
     }
@@ -209,6 +217,31 @@ app.post("/reset-password/confirm", async (req, res) => {
     console.error("Erro ao redefinir senha:", error);
     res.status(500).json({ error: "Erro ao redefinir senha." });
   }
+});
+
+app.post("/change-password", async (req, res) => {
+  try {
+    const { passwordReceived, newPassword } = req.body;
+    const user = await User.findOne();
+
+    if (user && await bcrypt.compare(passwordReceived, user.password)) {
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+
+      res.status(200).json({ message: "Senha alterada com sucesso." });
+    } else {
+      res.status(404).json({ error: "Usuário não encontrado." });
+    }
+  } catch (error) {
+    console.error("Erro ao alterar a senha:", error);
+    res.status(500).json({ error: "Erro ao alterar a senha." });
+  }
+});
+
+// Rota de verificação de saúde
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
 
 app.listen(port, () => {
