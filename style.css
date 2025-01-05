@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    background-color: #333; /* ajuste conforme necessário */
+}
+
+.button {
+    background-image: url('botão.png');
+    background-size: cover;
+    width: 50px; /* ajuste conforme necessário */
+    height: 50px; /* ajuste conforme necessário */
+    border: none;
+    cursor: pointer;
+    color: white; /* ajuste conforme necessário */
+    font-size: 12px; /* ajuste conforme necessário */
+    text-align: center;
+    line-height: 50px; /* ajuste conforme necessário */
+    margin-left: 10px;
+}

@@ -1,0 +1,121 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #669bac; /* Cor de fundo mais suave */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.window {
+  background-color: #ffffff;
+  border: 5px solid #d74f00; /* Adicionar borda */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Aumentar a largura máxima */
+  padding: 30px; /* Aumentar o padding */
+  border-radius: 10px;
+}
+
+.window-header {
+  background-color: #f47207;
+  color: #ffffff;
+  padding: 15px; /* Aumentar o padding */
+  display: flex;
+  justify-content: space-between; /* Alterar para space-between */
+  align-items: center;
+  border-top-left-radius: 10px; /* Aumentar o arredondamento */
+  border-top-right-radius: 10px; /* Aumentar o arredondamento */
+  position: relative;
+}
+
+.window-header h1 {
+  margin: 0;
+  font-size: 24px; /* Aumentar o tamanho da fonte */
+  text-align: center;
+  flex: 1; /* Adicionar flex: 1 */
+}
+
+.window-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  border-radius: 5px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px auto 0;
+}
+
+input {
+  margin-bottom: 15px; /* Aumentar o espaçamento entre os inputs */
+  padding: 12px; /* Aumentar o padding */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 5px; /* Aumentar o padding */
+  font-size: 5px; /* Aumentar o tamanho da fonte */
+  background-color: #0078d7;
+  color: #da4949;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #7e9e00;
+}
+
+button.success {
+  background-color: #28a745; /* Verde para sucesso */
+}
+
+button.error {
+  background-color: #dc3545; /* Vermelho para erro */
+}
+
+@media (max-width: 600px) {
+  .window {
+    padding: 20px;
+  }
+
+  .window-header {
+    padding: 10px;
+  }
+
+  .window-header h1 {
+    font-size: 20px;
+  }
+
+  input {
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 16px;
+  }
+}

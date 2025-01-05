@@ -1,0 +1,194 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+  gap: 10px; /* Adicionar espaço entre os elementos */
+  max-width: 1200px; /* Definir a largura máxima */
+  width: 100%; /* Garantir que ocupe 100% da largura disponível */
+}
+
+@media (min-width: 800px) {
+  .login-container {
+    flex-direction: row;
+    padding: 20px; /* Adicionar padding em telas maiores */
+    gap: 1px; /* Aumentar o espaço entre os elementos */
+  }
+}
+
+.login-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(148, 196, 233);
+  padding: 30px; /* Aumentar o padding */
+  border-radius: 12px; /* Aumentar o border-radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aumentar o box-shadow */
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  box-sizing: border-box;
+  margin-top: 15px; /* Reduzir o margin-top */
+}
+
+.login-info {
+  flex: 1;
+  background: linear-gradient(to right, #0a0912, #2575fc);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 24px; /* Aumentar o tamanho do texto */
+  margin-top: 5px;
+  border-radius: 12px; /* Adicionar border-radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicionar box-shadow */
+}
+
+.login-image {
+  flex: 1;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #b589e4, #2575fc);
+  color: white;
+  padding: 20px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  max-width: 450px;
+  height: auto;
+  border-radius: 12px; /* Adicionar border-radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicionar box-shadow */
+}
+
+.login-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.blinking-text {
+  animation: blinkingText 2.5s infinite;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+@keyframes blinkingText {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Aumentar o espaço entre os itens */
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; /* Diminuir a margem inferior */
+}
+
+.form-group input {
+  padding: 10px; /* Aumentar o padding */
+  font-size: 16px;
+  border: 1px solid #ccc; /* Adicionar borda */
+  border-radius: 8px; /* Adicionar border-radius */
+}
+
+.form-group label {
+  text-align: left; /* Alinhar o texto à esquerda */
+  width: 100%; /* Garantir que o label ocupe 100% da largura disponível */
+}
+
+.redefine-password {
+  margin-top: 0;
+}
+
+button {
+  background-color: #5a0fbf;
+  color: white; /* Alterar a cor do texto */
+  padding: 10px; /* Aumentar o padding */
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s; /* Adicionar transição para transform */
+  border-radius: 4px; /* Adicionar border-radius */
+}
+
+button:hover {
+  background-color: #5a0fbf; /* Alterar a cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Aumentar o botão ao passar o mouse */
+}
+
+button.success {
+  background-color: rgb(36, 192, 36);
+}
+
+button.error {
+  background-color: red;
+}
+
+button:active {
+  background-color: #5a0fbf;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    flex-direction: row;
+  }
+
+  .login-image {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+}
+
+.login-title {
+  font-size: 2em; /* Definir o tamanho da fonte para "Login" */
+  color: #000; /* Definir a cor para "Login" */
+}
+
+.aprovacao-title {
+  font-size: 1.5em; /* Definir o tamanho da fonte para "Aprovação de Documentos" */
+  color: #555; /* Definir a cor para "Aprovação de Documentos" */
+}
+
+h3 {
+  /* Adicione os estilos desejados para o h3 aqui */
+  margin-bottom: 10px; /* Diminuir a margem inferior */
+  color: #5a0fbf;
+  font-size: 1.5em;
+}
+
+p {
+  margin-bottom: 5px; /* Diminuir a margem inferior */
+}
+
+.reset-password-link {
+  margin-bottom: 5px; /* Diminuir a margem inferior */
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 5px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px; /* Definir largura do ícone */
+  height: 20px; /* Definir altura do ícone */
+}

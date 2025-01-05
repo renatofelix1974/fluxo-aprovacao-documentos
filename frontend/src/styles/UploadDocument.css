@@ -1,0 +1,133 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #7589de;
+  margin: 0;
+  padding: 0;
+}
+
+.document-status-container {
+  text-align: center;
+  padding: 30px;
+  background-color: #7caecb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(231, 60, 60, 0.1);
+  max-width: 600px;
+  margin: 50px auto; /* Ajuste adicional da margem superior */
+}
+
+.document-status-container h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.document-status-container p {
+  font-size: 16px;
+  color: #666;
+}
+
+.document-status-container form {
+  margin-top: 20px;
+}
+
+.document-status-container input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.document-status-container button {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.document-status-container button:hover {
+  background-color: #005a9e;
+}
+
+.file-preview {
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.document-status-container select {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%; /* Adicione esta linha */
+}
+
+.documents-list {
+  margin-top: 20px;
+}
+
+.document-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.document-item a {
+  text-decoration: none;
+  color: #0078d4;
+}
+
+.document-item button {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.document-item button:hover {
+  background-color: #005a9e;
+}
+
+.document-status-container input[type="text"],
+.document-status-container textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 95%; /* Certifique-se de que esta linha está presente */
+}
+
+.document-status-container textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.reset-password-link {
+  display: block;
+  margin-top: 10px;
+  color: #0078d4;
+  text-decoration: none;
+}
+
+.reset-password-link:hover {
+  text-decoration: underline;
+}
+
+.document-status-container .back-button {
+  background-color: #003366; /* Azul escuro */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px; /* Distância entre os botões */
+}
+
+.document-status-container .back-button:hover {
+  background-color: #002244; /* Azul mais escuro */
+}

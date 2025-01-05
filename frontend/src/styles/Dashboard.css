@@ -1,0 +1,91 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #0078d4;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+.dashboard-container {
+  text-align: center;
+  padding: 20px;
+  padding-top: 60px; /* Espaço para a barra de menu fixa */
+}
+
+/* Adicionando estilos para a seção de informações do tempo */
+.weather-info {
+  margin-top: 20px;
+  background-color: rgb(170, 196, 196);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.weather-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.documents-list {
+  margin-top: 20px;
+}
+
+.document-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.document-item a {
+  text-decoration: none;
+  color: #0078d4;
+}
+
+.document-item button {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.document-item button:hover {
+  background-color: #005a9e;
+}
+
+/* Adicionando estilos para o modo escuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .dashboard-container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode button {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Adicione mais estilos conforme necessário */
