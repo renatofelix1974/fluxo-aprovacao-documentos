@@ -35,7 +35,7 @@ const DocumentStatus = () => {
       formData.append("name", documentName);
       formData.append("description", documentDescription);
 
-      fetch(`http://localhost:5000/uploads/${selectedArea}`, {
+      fetch(`http://localhost:5000/upload/${selectedArea}`, { // Corrigir o endpoint
         method: "POST",
         body: formData,
       })
