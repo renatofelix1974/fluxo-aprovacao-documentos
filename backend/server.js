@@ -178,6 +178,9 @@ app.get("/documents/:area", async (req, res) => {
 app.post("/documents/:id/sign", async (req, res) => {
   try {
     const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ error: "ID do documento é obrigatório" });
+    }
     const document = await Document.findByPk(id);
 
     if (document) {

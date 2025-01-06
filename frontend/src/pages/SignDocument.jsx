@@ -5,10 +5,11 @@ import "../styles/SignDocument.css";
 const SignDocument = () => {
   const [documents, setDocuments] = useState([]);
   const [selectedArea, setSelectedArea] = useState("");
+  const [showDocuments, setShowDocuments] = useState(false); // Novo estado para controlar a exibição dos documentos
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (selectedArea) {
+    if (showDocuments && selectedArea) {
       fetch(`http://localhost:5000/documents/${selectedArea}`)
         .then((response) => {
           if (!response.ok) {
@@ -19,24 +20,14 @@ const SignDocument = () => {
         .then((data) => setDocuments(data))
         .catch((error) => console.error("Erro ao buscar documentos:", error));
     }
-  }, [selectedArea]);
+  }, [showDocuments, selectedArea]);
 
   const handleAreaChange = (e) => {
     setSelectedArea(e.target.value);
   };
 
   const handleLoadDocuments = () => {
-    if (selectedArea) {
-      fetch(`http://localhost:5000/documents/${selectedArea}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => setDocuments(data))
-        .catch((error) => console.error("Erro ao buscar documentos:", error));
-    }
+    setShowDocuments(true); // Atualizar o estado para mostrar os documentos
   };
 
   const handleSign = (documentId) => {
@@ -74,25 +65,27 @@ const SignDocument = () => {
           Voltar ao Dashboard
         </button>
       </div>
-      <div className="documents-list-container">
-        <div className="documents-list">
-          {documents.map((doc) => (
-            <div key={doc.id} className="document-item">
-              <div className="document-info">
-                <p><strong>Nome:</strong> {doc.filename}</p>
-                <p><strong>Descrição:</strong> {doc.description}</p>
+      {showDocuments && (
+        <div className="documents-list-container">
+          <div className="documents-list">
+            {documents.map((doc) => (
+              <div key={doc.id} className="document-item">
+                <div className="document-info">
+                  <p><strong>Nome:</strong> {doc.filename}</p>
+                  <p><strong>Descrição:</strong> {doc.description}</p>
+                </div>
+                <div className="status-indicators">
+                  {doc.status === "ok" ? (
+                    <button className="status-ok">Documento OK!</button>
+                  ) : (
+                    <button className="status-pending" onClick={() => handleSign(doc.id)}>Assinar</button>
+                  )}
+                </div>
               </div>
-              <div className="status-indicators">
-                {doc.status === "ok" ? (
-                  <button className="status-ok">Documento OK!</button>
-                ) : (
-                  <button className="status-pending" onClick={() => handleSign(doc.id)}>Assinar</button>
-                )}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

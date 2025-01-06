@@ -12,16 +12,16 @@ body {
   min-height: 100vh;
   padding: 10px;
   box-sizing: border-box;
-  gap: 5px; /* Adicionar espaço entre os elementos */
-  max-width: 1200px; /* Definir a largura máxima */
-  width: 100%; /* Garantir que ocupe 100% da largura disponível */
+  gap: 0; /* Remover o espaço entre os elementos */
+  width: 90%; /* Aumentar a largura */
+  max-width: 1400px; /* Definir a largura máxima */
 }
 
 @media (min-width: 800px) {
   .login-container {
     flex-direction: row;
     padding: 20px; /* Adicionar padding em telas maiores */
-    gap: 1px; /* Aumentar o espaço entre os elementos */
+    gap: 20px; /* Aumentar o espaço entre os elementos */
   }
 }
 
@@ -36,10 +36,10 @@ body {
   box-shadow: 0 4px 8px rgba(76, 140, 209, 0.979); /* Aumentar o box-shadow */
   text-align: center;
   width: 100%;
-  max-width: 450px;
+  max-width: 600px; /* Aumentar a largura máxima */
   height: auto;
   box-sizing: border-box;
-  margin-top: 15px; /* Reduzir o margin-top */
+  margin-top: 0; /* Remover a margem superior */
 }
 
 .login-info {
@@ -59,19 +59,27 @@ body {
 }
 
 .login-image {
-  flex: 1;
-  display: grid;
+  flex: 1.5;
+  display: none; /* Sumir a imagem em telas menores */
   align-items: center;
   justify-content: center;
   background: linear-gradient(to right, #b589e485, #2575fc);
   color: rgb(199, 230, 23);
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 0; /* Remover a margem superior */
   box-sizing: border-box;
-  max-width: 450px;
+  max-width: 600px; /* Garantir que a largura máxima seja a mesma do login-form */
   height: auto;
   border-radius: 12px; /* Adicionar border-radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adicionar box-shadow */
+}
+
+@media (min-width: 800px) {
+  .login-image {
+    display: grid; /* Mostrar a imagem em telas maiores */
+    margin-top: 0;
+    margin-left: 20px;
+  }
 }
 
 .login-image img {
