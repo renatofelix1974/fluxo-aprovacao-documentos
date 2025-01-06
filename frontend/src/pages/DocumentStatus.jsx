@@ -49,6 +49,15 @@ const DocumentStatus = () => {
     return "gray";
   };
 
+  const getStatusText = (status, dueDate) => {
+    const currentDate = new Date();
+    const expirationDate = new Date(dueDate);
+    if (status === "ok") return "Documento Assinado";
+    if (status === "pendente") return "Pendente de Assinatura";
+    if (currentDate > expirationDate) return "Prazo Expirado";
+    return "Status Desconhecido";
+  };
+
   return (
     <div className="document-status-page">
       <div className="document-status-container">
@@ -74,15 +83,15 @@ const DocumentStatus = () => {
           {documents.map((doc) => (
             <div key={doc.id} className="document-item">
               <div className="document-info">
-                <p><strong>Nome:</strong> {doc.filename}</p>
+                <p>
+                  <strong>Nome:</strong> {doc.filename}
+                  <span className="status-indicators">
+                    <div className={`status-dot ${getStatusColor(doc.status, doc.dueDate)}`}></div>
+                    <span>{getStatusText(doc.status, doc.dueDate)}</span>
+                  </span>
+                </p>
                 <p><strong>Descrição:</strong> {doc.description}</p>
               </div>
-              <div className="status-indicators">
-                <div className={`status-dot ${getStatusColor(doc.status, doc.dueDate)}`}></div>
-              </div>
-              {doc.status === "pendente" && (
-                <button onClick={() => handleSign(doc.id)}>Assinar</button>
-              )}
             </div>
           ))}
         </div>
