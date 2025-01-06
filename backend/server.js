@@ -150,6 +150,31 @@ app.get("/documents", async (req, res) => {
   }
 });
 
+app.get("/documents/:area", async (req, res) => {
+  try {
+    const { area } = req.params;
+    const folder = path.join(__dirname, "uploads", decodeURIComponent(area));
+
+    // Verificar se o diretório existe
+    if (!fs.existsSync(folder)) {
+      return res.status(404).json({ error: "Diretório não encontrado." });
+    }
+
+    const files = await fs.readdir(folder);
+
+    const documents = files.map(file => ({
+      filename: file,
+      area: decodeURIComponent(area),
+      status: "pendente"
+    }));
+
+    res.status(200).json(documents);
+  } catch (error) {
+    console.error("Erro ao buscar documentos:", error);
+    res.status(500).json({ error: "Erro ao buscar documentos" });
+  }
+});
+
 app.post("/documents/:id/sign", async (req, res) => {
   try {
     const { id } = req.params;
@@ -221,8 +246,13 @@ app.post("/reset-password/confirm", async (req, res) => {
 
 app.post("/change-password", async (req, res) => {
   try {
-    const { passwordReceived, newPassword } = req.body;
-    const user = await User.findOne();
+    const { username, passwordReceived, newPassword } = req.body;
+
+    if (!username) {
+      return res.status(400).json({ error: "O campo username é obrigatório." });
+    }
+
+    const user = await User.findOne({ where: { username } });
 
     if (user && await bcrypt.compare(passwordReceived, user.password)) {
       const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -231,7 +261,7 @@ app.post("/change-password", async (req, res) => {
 
       res.status(200).json({ message: "Senha alterada com sucesso." });
     } else {
-      res.status(404).json({ error: "Usuário não encontrado." });
+      res.status(404).json({ error: "Usuário não encontrado ou senha atual incorreta." });
     }
   } catch (error) {
     console.error("Erro ao alterar a senha:", error);

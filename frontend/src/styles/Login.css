@@ -1,3 +1,9 @@
+body {
+  background: url('../assets/body.gif') no-repeat center center fixed; /* Usar imagem GIF como fundo */
+  background-size: cover;
+  color: white;
+}
+
 .login-container {
   display: flex;
   flex-direction: column;
@@ -6,7 +12,7 @@
   min-height: 100vh;
   padding: 10px;
   box-sizing: border-box;
-  gap: 10px; /* Adicionar espaço entre os elementos */
+  gap: 5px; /* Adicionar espaço entre os elementos */
   max-width: 1200px; /* Definir a largura máxima */
   width: 100%; /* Garantir que ocupe 100% da largura disponível */
 }
@@ -24,10 +30,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(148, 196, 233);
+  background-color: rgba(167, 82, 228, 0.523);
   padding: 30px; /* Aumentar o padding */
   border-radius: 12px; /* Aumentar o border-radius */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aumentar o box-shadow */
+  box-shadow: 0 4px 8px rgba(76, 140, 209, 0.979); /* Aumentar o box-shadow */
   text-align: center;
   width: 100%;
   max-width: 450px;
@@ -38,7 +44,7 @@
 
 .login-info {
   flex: 1;
-  background: linear-gradient(to right, #0a0912, #2575fc);
+  background: linear-gradient(to right, #eac808, #2575fc);
   color: white;
   display: flex;
   align-items: center;
@@ -57,8 +63,8 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #b589e4, #2575fc);
-  color: white;
+  background: linear-gradient(to right, #b589e485, #2575fc);
+  color: rgb(199, 230, 23);
   padding: 20px;
   margin-top: 10px;
   box-sizing: border-box;
@@ -167,7 +173,7 @@ button:active {
 h3 {
   /* Adicione os estilos desejados para o h3 aqui */
   margin-bottom: 10px; /* Diminuir a margem inferior */
-  color: #5a0fbf;
+  color: #0fbf90;
   font-size: 1.5em;
 }
 
@@ -191,4 +197,9 @@ p {
   cursor: pointer;
   width: 20px; /* Definir largura do ícone */
   height: 20px; /* Definir altura do ícone */
+}
+
+.register-link {
+  color: rgb(145, 225, 101); /* Altere a cor conforme necessário */
+  text-decoration: underline;
 }

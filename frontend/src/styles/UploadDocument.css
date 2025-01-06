@@ -8,7 +8,7 @@ body {
 .document-status-container {
   text-align: center;
   padding: 30px;
-  background-color: #7caecb;
+  background-color: #1a88c7;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(231, 60, 60, 0.1);
   max-width: 600px;
@@ -22,7 +22,7 @@ body {
 
 .document-status-container p {
   font-size: 16px;
-  color: #666;
+  color: #e9f418;
 }
 
 .document-status-container form {

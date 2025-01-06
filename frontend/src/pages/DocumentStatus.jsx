@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/DocumentStatus.css";
 
 const DocumentStatus = () => {
   const [documents, setDocuments] = useState([]);
   const [selectedArea, setSelectedArea] = useState("");
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  const handleAreaChange = (e) => {
+    setSelectedArea(e.target.value);
+  };
+
+  const handleLoadDocuments = () => {
     if (selectedArea) {
-      fetch(`http://localhost:5000/uploads/${selectedArea}/documents`)
+      fetch(`http://localhost:5000/documents/${selectedArea}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -17,10 +23,6 @@ const DocumentStatus = () => {
         .then((data) => setDocuments(data))
         .catch((error) => console.error("Erro ao buscar documentos:", error));
     }
-  }, [selectedArea]);
-
-  const handleAreaChange = (e) => {
-    setSelectedArea(e.target.value);
   };
 
   const handleSign = (documentId) => {
@@ -48,31 +50,42 @@ const DocumentStatus = () => {
   };
 
   return (
-    <div className="document-status-container">
-      <h1>Status dos testes Documentos</h1>
-      <p>Aqui você verá os documentos separados por área.</p>
-      <select value={selectedArea} onChange={handleAreaChange} required>
-        <option value="">Selecione a área</option>
-        <option value="Administração">Administração</option>
-        <option value="Aeronautica">Aeronáutica</option>
-        <option value="Engenharia">Engenharia</option>
-        <option value="RH">Recursos Humanos</option>
-        <option value="TI">Tecnologia da Informação</option>
-      </select>
-      <div className="documents-list">
-        {documents.map((doc) => (
-          <div key={doc.id} className="document-item">
-            <a href={`http://localhost:5000/uploads/${selectedArea}/${doc.filename}`} target="_blank" rel="noopener noreferrer">
-              {doc.filename}
-            </a>
-            <div className="status-indicators">
-              <div className={`status-dot ${getStatusColor(doc.status, doc.dueDate)}`}></div>
+    <div className="document-status-page">
+      <div className="document-status-container">
+        <h1>Status dos Documentos</h1>
+        <p>Aqui você verá os documentos separados por área.</p>
+        <div className="area-selection">
+          <select value={selectedArea} onChange={handleAreaChange} required>
+            <option value="">Selecione a área</option>
+            <option value="Admin">Administração</option>
+            <option value="Aeronautica">Aeronáutica</option>
+            <option value="Engenharia">Engenharia</option>
+            <option value="RH">Recursos Humanos</option>
+            <option value="TI">Tecnologia da Informação</option>
+          </select>
+          <button onClick={handleLoadDocuments}>OK</button>
+        </div>
+        <button className="back-button" onClick={() => navigate("/dashboard")}>
+          Voltar ao Dashboard
+        </button>
+      </div>
+      <div className="documents-list-container">
+        <div className="documents-list">
+          {documents.map((doc) => (
+            <div key={doc.id} className="document-item">
+              <div className="document-info">
+                <p><strong>Nome:</strong> {doc.filename}</p>
+                <p><strong>Descrição:</strong> {doc.description}</p>
+              </div>
+              <div className="status-indicators">
+                <div className={`status-dot ${getStatusColor(doc.status, doc.dueDate)}`}></div>
+              </div>
+              {doc.status === "pendente" && (
+                <button onClick={() => handleSign(doc.id)}>Assinar</button>
+              )}
             </div>
-            {doc.status === "pendente" && (
-              <button onClick={() => handleSign(doc.id)}>Assinar</button>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

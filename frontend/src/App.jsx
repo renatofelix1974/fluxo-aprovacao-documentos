@@ -6,7 +6,8 @@ import Dashboard from './pages/Dashboard';
 import UploadDocument from './pages/UploadDocument';
 import DocumentStatus from './pages/DocumentStatus';
 import ResetPassword from './pages/ResetPassword';
-import ResetPasswordForm from './pages/ResetPasswordForm'; // Importação da nova página
+import ResetPasswordForm from './pages/ResetPasswordForm';
+import SignDocument from './pages/SignDocument'; // Importação da nova página
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
         <Route path="/upload" element={<UploadDocument />} />
         <Route path="/status" element={<DocumentStatus />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/reset-password-form" element={<ResetPasswordForm />} /> {/* Nova rota */}
+        <Route path="/reset-password-form" element={<ResetPasswordForm />} />
         <Route path="/change-password" element={<ResetPasswordForm />} />
+        <Route path="/sign" element={<SignDocument />} /> {/* Nova rota */}
       </Routes>
     </Router>
   );

@@ -72,7 +72,7 @@ const DocumentStatus = () => {
       <form onSubmit={handleuploads}>
         <select value={selectedArea} onChange={handleAreaChange} required>
           <option value="">Selecione a área</option>
-          <option value="Administracao">Administração</option>
+          <option value="Admin">Administração</option>
           <option value="Aeronautica">Aeronáutica</option>
           <option value="Engenharia">Engenharia</option>
           <option value="RH">Recursos Humanos</option>

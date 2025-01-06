@@ -39,13 +39,18 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <div className="login-form" style={{ flex: 1 }}>
-        <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>Seja bem-vindo de volta!</p>
+      <div className="login-form" style={{ flex: 0.6 }}> {/* Reduzir o tamanho do container do formulário */}
         <h3>User Login</h3>        
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Nome de usuário</label>
-            <input type="text" id="username" name="username" placeholder="Digite seu nome" />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Digite seu nome"
+              style={{ width: "100%" }} // Tornar o campo de nome automático no tamanho
+            />
           </div>
           <div className="form-group">
             <label htmlFor="password">Senha de acesso</label>
@@ -55,6 +60,7 @@ const Login = () => {
                 id="password"
                 name="password"
                 placeholder="Digite sua senha"
+                style={{ width: "100%" }} // Tornar o campo de senha automático no tamanho
               />
               <img
                 src={passwordVisible ? visibleIcon : closedIcon}
@@ -68,7 +74,7 @@ const Login = () => {
         </form>
         {error && <p style={{ color: "red" }}>Credenciais incorretas. Por favor, verifique-as e tente novamente!</p>}
         <p>
-          Não é cadastrado? <a href="/register">Clique aqui!</a> <Link to="/reset-password" className="reset-password-link">Redefinir Senha</Link>
+          Não é cadastrado? <a href="/register" className="register-link">Clique aqui!</a> <Link to="/reset-password" className="reset-password-link">Redefinir Senha</Link>
         </p>
       </div>
       <div className="login-image" style={{ flex:2 }}>

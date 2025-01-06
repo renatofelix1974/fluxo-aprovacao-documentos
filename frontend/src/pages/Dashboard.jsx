@@ -69,7 +69,7 @@ const Dashboard = () => {
             <p>Temperatura: {weather.temp}°C</p>
             <p>Condição: {weather.description}</p>
             <img
-              src={`/path/to/images/${getWeatherImage(weather.condition_slug)}`}
+              src={`/assets/${getWeatherImage(weather.condition_slug)}`}
               alt={weather.description}
             />
           </div>

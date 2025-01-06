@@ -9,8 +9,8 @@ body {
 }
 
 .window {
-  background-color: #ffffff;
-  border: 5px solid #d74f00; /* Adicionar borda */
+  background-color: #bf8787a6;
+  border: 5px solid #de4343; /* Adicionar borda */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px; /* Aumentar a largura máxima */
@@ -19,8 +19,8 @@ body {
 }
 
 .window-header {
-  background-color: #f47207;
-  color: #ffffff;
+  background-color: #9f4b40;
+  color: #f4eded;
   padding: 15px; /* Aumentar o padding */
   display: flex;
   justify-content: space-between; /* Alterar para space-between */
@@ -57,7 +57,7 @@ body {
 }
 
 .close-button:hover {
-  color: red;
+  color: #111111;
 }
 
 form {
@@ -71,14 +71,14 @@ input {
   margin-bottom: 15px; /* Aumentar o espaçamento entre os inputs */
   padding: 12px; /* Aumentar o padding */
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #a97a7a;
   border-radius: 5px;
 }
 
 button {
   padding: 5px; /* Aumentar o padding */
   font-size: 5px; /* Aumentar o tamanho da fonte */
-  background-color: #0078d7;
+  background-color: #11da49;
   color: #da4949;
   border: none;
   cursor: pointer;

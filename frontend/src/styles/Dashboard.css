@@ -32,7 +32,7 @@ body {
 /* Adicionando estilos para a seção de informações do tempo */
 .weather-info {
   margin-top: 20px;
-  background-color: rgb(170, 196, 196);
+  background-color: rgba(243, 176, 245, 0.549);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
